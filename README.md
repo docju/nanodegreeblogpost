@@ -3,39 +3,70 @@
 
 1. [Installation](#installation)
 2. [Project Motivation](#motivation)
-3. [File Descriptions](#files)
-4. [Results](#results)
-5. [Licensing, Authors, and Acknowledgements](#licensing)
+3. [Process](#process)
+4. [File Descriptions](#files)
+5. [Processing](#processing)
+6. [Licensing, Authors, and Acknowledgements](#licensing)
 
 ## Installation <a name="installation"></a>
+A number of libraries need to be imported (this will be included in the Anaconda version of Python):
+sys
+nltk
+re
+string
+numpy
+pandas
+pickle
+sklearn
+flask
+json
+plotly
+sqlalchemy
 
-There should be no necessary libraries to run the code here beyond the Anaconda distribution of Python.  The code should run with no issues using Python versions 3.*.
 
 ## Project Motivation<a name="motivation"></a>
 
-For this project, I was interestested in using Stack Overflow data from 2017 to better understand:
+We want to understand how we can classify messages received in a disaster response scenario  so that appropriate help can be sent to the sender, and find the best model to do so. Along the way, we use different methods and select the best one to find the optimal model to classify from data we have received from Figure8/Appen. We will also provide some visualisations to better understand the distribution of the classifications as well as an API to perform this automatically.
 
-1. How other developers suggested breaking into the field (what education to pursue)?
-2. What factors about an individual contributed to salary?
-3. How bias played a role in the suggestions of developers for how to break into the field?
-4. What was the state of bootcamps for assisting individuals with breaking into developer roles?
-5. How were bootcamps assisting with increasing diversity in tech careers?
+The visualisations included are a count of the genres, the count of the number of messages that fit in to a given topic, and the total number of messages that have the given number of topics.
 
-The full set of files related to this course are owned by Udacity, so they are not publicly available here.  However, you can see pieces of the analysis here.  This README also serves as a template for students to follow in creating their own project README files.
+## Process <a name= "process"></a>
+We used Jupyter notebooks to perform exploratory data analysis on the data, after which we created the ETL process in process_data.py. 
+Using pipelines, we used various methods including logistic regression, random forests, and decision trees to determine the best model to use for the model. Once this was done, the refactored code was put into an IDE so it could be run from a terminal. 
+Plotly visuals were created and added to the html documents, and then the flask app was created using a template provided by Udacity.
 
 
 ## File Descriptions <a name="files"></a>
 
-There are 3 notebooks available here to showcase work related to the above questions.  Each of the notebooks is exploratory in searching through the data pertaining to the questions showcased by the notebook title.  Markdown cells were used to assist in walking through the thought process for individual steps.  
+The "app" folder contains a folder with the two html templates go.html and master.html which contain the resulting output from classifying the webpage and the visualisations respectively.
 
-There is an additional `.py` file that runs the necessary code to obtain the final model used to predict salary.
+It also contains the main "run.py" code that runs the app.
 
-## Results<a name="results"></a>
+The "data" folder contains the two raw csvs and the "process_data.py" python code which loads the data.
 
-The main findings of the code can be found at the post available [here](https://medium.com/@josh_2774/how-do-you-become-a-developer-5ef1c1c68711).
+The "models" folder contains the python code that trains the classifier as well as the pickle file that is output from the classifier
+
+## Processing<a name="processing"></a>
+
+In order to run the code, navigate the correct workplace in the terminal.
+
+Run process_data.py to load the data to the correct location
+
+Run train_classifier.py to process the data and build the model (this takes a while)
+
+Run env|grep WORK to find the domain and ID- the website you'll need to navigate to. It will be https://[ID]-3001.[domain]
+
+Run app/run.py to start the app
+
+Navigate to the webpage using the id and domain and input a message into the box, and it will return the classification.
+
+## Results<a name=results"></a>
+The final model is functional, but could perform better- one issue is that the "child_alone" category has no positive hits and so it is impossible to model on as it stands. All of the other categories have a good accuracy above 75% but some words such as "freezing" do not get assigned to obviously correct topics.
+  
+The visualisations show that "related" is a popular topic but it is not clear what that means. Otherwise, they show that messages can be classified in to more than one topic, and this is quite common.
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
-Must give credit to Stack Overflow for the data.  You can find the Licensing for the data and other descriptive information at the Kaggle link available [here](https://www.kaggle.com/stackoverflow/so-survey-2017/data).  Otherwise, feel free to use the code here as you would like! 
+Data was provided by Figure8/Appen and the projects and templates were provided by Udacity.
 
-Blah
+
