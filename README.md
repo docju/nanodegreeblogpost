@@ -6,7 +6,8 @@
 3. [Process](#process)
 4. [File Descriptions](#files)
 5. [Processing](#processing)
-6. [Licensing, Authors, and Acknowledgements](#licensing)
+6. [Results](#results)
+7. [Licensing, Authors, and Acknowledgements](#licensing)
 
 ## Installation <a name="installation"></a>
 A number of libraries need to be imported (this will be included in the Anaconda version of Python):
